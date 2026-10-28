@@ -16,6 +16,8 @@ Siddhartha tüm dogmaları terk etmiş, Samsara'nın dibini görmüş, intiharı
    Nehrin su kaynağında, şelalede ve denizde aynı anda var olması. Marcus Aurelius'un Stoacı zaman algısı, Hesse'nin eşzamanlılık idraki ve geçmiş/gelecek kaygısının aşılması.
 3. **[Wu-Wei ve Zahmetsiz Eylem](./03-wu-wei-ve-zahmetsiz-eylem.md):** 
    Taoizm'in temel ilkesi Wu-Wei (eylemsizlik veya doğaya aykırı davranmama). Bruce Lee'nin "su gibi ol" felsefesi ve nehrin akışına direnmeden kürek çekmek.
+4. **[Anlık Farkındalık ve Zen Ustalığı](./04-anlik-farkindalik-ve-zen-ustaligi.md):** 
+   Sıradan olanın kutsallığı (odun kes, su taşı), Eugen Herrigel'in okçuluk sanatı ve nehirde kayık çekmenin zazen hali.
 
 ---
 

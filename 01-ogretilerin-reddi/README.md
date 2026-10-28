@@ -16,6 +16,8 @@ Bu bölüm, bireyin kendi hakikatini ararken karşılaştığı ilk ve en tehlik
    Lao Tzu ve Zen epistemolojisi. Kavramların akışkan gerçekliği dondurması, dilin sınırları ve bilginin bilgeliğe dönüşememe trajedisi.
 3. **[Ustanın Yolunu Terk Etmek](./03-ustanin-yolunu-terk-etmek.md):** 
    Nietzsche'nin *Böyle Buyurdu Zerdüşt* çağrısı, Carl Rogers'ın deneyimsel öğrenme kuramı ve ustanın izinden gitmeyip ustanın aradığı şeyi arama cesareti.
+4. **[Sokratik Bilgisizlik ve Boş Kadeh](./04-sokratik-bilgisizlik-ve-bos-kadeh.md):** 
+   Zen ustasının taşan çay fincanı metaforu, Sokrates'in aporia yöntemi ve bilgelik için önce zihni boşaltmanın zorunluluğu.
 
 ---
 

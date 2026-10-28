@@ -16,6 +16,8 @@ Oysa Hermann Hesse'nin *Siddhartha* romanı ve Carl Gustav Jung'un derinlik psik
    Analitik psikolojide "Gölge" kavramı. Bastırılan arzuların enantiodromia (zıttına dönüşme) ile patlaması ve bireyleşme (Individuation) sürecinin karanlıkla yüzleşme zorunluluğu.
 3. **[Lotus ve Çamur](./03-lotus-ve-camur.md):** 
    Doğu bilgeliğindeki Lotus çiçeği metaforu ve Herakleitos'un karşıtların birliği öğretisi. Günahın ve hatanın, uyanışın en verimli gübresi oluşu.
+4. **[Arzu Takıntısı ve Schopenhauer](./04-arzu-takintisi-ve-schopenhauer.md):** 
+   İstenç ve Tasarım Olarak Dünya felsefesi; ıstırap ile can sıkıntısı sarkacı ve Siddhartha'nın kumar masasındaki boşluğu bizzat tüketmesi.
 
 ---
 

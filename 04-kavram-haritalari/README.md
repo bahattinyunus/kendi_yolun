@@ -16,3 +16,5 @@ Buradaki amaç, felsefeyi soyut bir kitap bilgisi olmaktan çıkarıp günlük y
    Zihinsel kısır döngülerden (Dogma Loop, Perfectionism Loop, Shadow Repression, Future Anxiety) çıkış akış diyagramları ve felsefi refactoring modelleri.
 3. **[Felsefi Sözlük ve Kavramlar Kılavuzu](./03-sozluk-ve-kavramlar.md):** 
    Antik Sanskritçe, Çince, Grekçe ve modern psikoloji terimlerinin kapsamlı etimolojik ve kavramsal sözlüğü.
+4. **[Varoluşsal Kriz Rehberi](./04-varolussal-kriz-rehberi.md):** 
+   Anlamsızlık, değerler çöküşü (nihilizm), ölüm kaygısı ve suçluluk krizleri için teşhis ve felsefi reçeteler (Frankl, Camus, Heidegger, Jung).
