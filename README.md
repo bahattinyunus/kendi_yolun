@@ -10,6 +10,10 @@
 [![Tests](https://img.shields.io/badge/Birim_Testler-11_Geçti_(%25100)-brightgreen?style=flat-square)](test_kendi_yolun.py)
 [![Status](https://img.shields.io/badge/Durum-Eksiksiz_%7C_Doğrulanmış-success?style=flat-square)](#-etkileşimli-felsefe-motoru-kendi_yolunpy)
 
+<p align="center">
+  <img src="assets/hero-banner.jpg" alt="Kendi Yolun: Siddhartha Nehir Kıyısında Tefekkür" width="100%" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.5);" />
+</p>
+
 ---
 
 ## 🧭 Giriş ve Varoluşsal Manifesto
@@ -58,6 +62,10 @@ flowchart TD
     class A,B,C,D,E,F,G,H evre;
     class I peak;
 ```
+
+<p align="center">
+  <img src="assets/siddhartha-journey-map.svg" alt="Siddhartha'nın 8 Varoluşsal Durağı" width="100%" />
+</p>
 
 ---
 
@@ -113,6 +121,10 @@ Bu arşivde bir araya getirilen düşünürlerin altını çizdiği temel varolu
 
 > *"Cennete giden yol, cehennemi bizzat tanımaktan geçer."*  
 > **— Dante Alighieri**
+
+<p align="center">
+  <img src="assets/shadow-lotus-dialectic.svg" alt="Lotus ve Çamur Diyalektiği - Gölge Entegrasyonu" width="100%" />
+</p>
 
 ---
 
@@ -270,6 +282,10 @@ kendi_yolun/
 ```
 
 ---
+
+<p align="center">
+  <img src="assets/philosophies-wheel.svg" alt="7 Kesişen Felsefi Gelenek ve Ortak Merkez" width="100%" />
+</p>
 
 ## 📊 Kapsamlı Karşılaştırmalı Öğreti Matrisi
 

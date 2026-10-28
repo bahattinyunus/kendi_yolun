@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="100%">
+  <defs>
+    <!-- Arka Plan Gradyanları -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0c16"/>
+      <stop offset="50%" stop-color="#141829"/>
+      <stop offset="100%" stop-color="#090a10"/>
+    </linearGradient>
+    <linearGradient id="riverGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.1"/>
+      <stop offset="30%" stop-color="#818cf8" stop-opacity="0.35"/>
+      <stop offset="70%" stop-color="#c084fc" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="lotusGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="50%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#db2777"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Arka Plan -->
+  <rect width="1200" height="360" fill="url(#bgGrad)" rx="16"/>
+
+  <!-- Yıldızlar / Kozmik Parıltılar -->
+  <g fill="#ffffff" opacity="0.4">
+    <circle cx="120" cy="50" r="1.5" />
+    <circle cx="280" cy="80" r="1.2" />
+    <circle cx="420" cy="40" r="1.8" />
+    <circle cx="750" cy="65" r="1.5" />
+    <circle cx="920" cy="45" r="1.2" />
+    <circle cx="1060" cy="85" r="2.0" />
+    <circle cx="1140" cy="50" r="1.0" />
+    <circle cx="200" cy="140" r="1.0" opacity="0.2"/>
+    <circle cx="980" cy="130" r="1.2" opacity="0.3"/>
+  </g>
+
+  <!-- Arka Plan Işık Halesi -->
+  <circle cx="600" cy="180" r="180" fill="#6366f1" opacity="0.12" filter="url(#glow)"/>
+  <circle cx="600" cy="180" r="90" fill="#f59e0b" opacity="0.08" filter="url(#glow)"/>
+
+  <!-- Soyut Nehir Dalgaları (Alt Kısım) -->
+  <path d="M 0 280 C 300 240, 450 320, 750 270 C 950 235, 1100 290, 1200 275 L 1200 360 L 0 360 Z" fill="url(#riverGrad)"/>
+  <path d="M 0 310 C 250 280, 550 330, 850 295 C 1050 270, 1150 320, 1200 305 L 1200 360 L 0 360 Z" fill="#38bdf8" opacity="0.15"/>
+
+  <!-- Stilize Lotus Çiçeği İkonu (Merkez Üst) -->
+  <g transform="translate(600, 75) scale(0.75)" filter="url(#glow)">
+    <!-- Sol Yapraklar -->
+    <path d="M 0 20 C -25 -10, -50 0, -45 35 C -30 45, -10 40, 0 45 Z" fill="url(#lotusGrad)" opacity="0.85"/>
+    <path d="M 0 20 C -40 -25, -75 -5, -60 40 C -40 50, -15 45, 0 45 Z" fill="url(#lotusGrad)" opacity="0.6"/>
+    <!-- Sağ Yapraklar -->
+    <path d="M 0 20 C 25 -10, 50 0, 45 35 C 30 45, 10 40, 0 45 Z" fill="url(#lotusGrad)" opacity="0.85"/>
+    <path d="M 0 20 C 40 -25, 75 -5, 60 40 C 40 50, 15 45, 0 45 Z" fill="url(#lotusGrad)" opacity="0.6"/>
+    <!-- Orta Yaprak -->
+    <path d="M 0 -15 C -22 10, -15 35, 0 45 C 15 35, 22 10, 0 -15 Z" fill="url(#goldGrad)"/>
+  </g>
+
+  <!-- Başlık Metinleri -->
+  <text x="600" y="165" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif" font-size="38" font-weight="800" text-anchor="middle" fill="#f8fafc" letter-spacing="3">
+    KENDİ YOLUN
+  </text>
+  
+  <text x="600" y="200" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif" font-size="16" font-weight="500" text-anchor="middle" fill="#94a3b8" letter-spacing="5">
+    DENEYİMSEL BİLGELİK VE KARŞILAŞTIRMALI FELSEFE ARŞİVİ
+  </text>
+
+  <!-- Çerçeve / Bölücü Çizgi -->
+  <line x1="450" y1="225" x2="750" y2="225" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- Alt Felsefi Aforizma -->
+  <text x="600" y="255" font-family="'Georgia', serif" font-style="italic" font-size="15" text-anchor="middle" fill="#cbd5e1" opacity="0.9">
+    "Bilgi aktarılabilir ama bilgelik aktarılamaz. Bilgelik bulunabilir, yaşanabilir... ama söylenemez."
+  </text>
+  <text x="600" y="278" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#f59e0b" opacity="0.85">
+    — Hermann Hesse, Siddhartha
+  </text>
+
+  <!-- Alt Köşe Etiketleri -->
+  <g font-family="'SF Pro Display', -apple-system, sans-serif" font-size="11" fill="#64748b" font-weight="600">
+    <text x="40" y="335">7 BÖLÜM • 28 METİN</text>
+    <text x="1160" y="335" text-anchor="end">HERMANN HESSE • JUNG • NIETZSCHE • LAO TZU • STOACILIK</text>
+  </g>
+</svg>

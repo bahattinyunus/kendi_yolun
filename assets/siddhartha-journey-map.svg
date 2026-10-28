@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="mapBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="pathGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="25%" stop-color="#818cf8"/>
+      <stop offset="50%" stop-color="#f43f5e"/>
+      <stop offset="75%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <filter id="nodeGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="1100" height="380" fill="url(#mapBg)" rx="16" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Başlık -->
+  <text x="550" y="42" font-family="'Segoe UI', -apple-system, sans-serif" font-size="20" font-weight="700" text-anchor="middle" fill="#f8fafc" letter-spacing="1.5">
+    SİDDHARTHA'NIN DÖNÜŞÜM YOLCULUĞU &amp; VAROLUŞSAL DURAKLAR
+  </text>
+  <text x="550" y="65" font-family="'Segoe UI', sans-serif" font-size="12" text-anchor="middle" fill="#64748b">
+    Kavramsal Harita: Dogmadan Çamura, Çamurdan Nehrin Zamansızlığına
+  </text>
+
+  <!-- Bağlantı Yolu (Nehir Eğrisi) -->
+  <path d="M 90 190 Q 230 110, 360 190 T 630 190 T 900 190 T 1010 190" fill="none" stroke="url(#pathGrad)" stroke-width="4" stroke-dasharray="6,4" opacity="0.8"/>
+
+  <!-- 1. Durak: Brahman Evi -->
+  <g transform="translate(90, 190)">
+    <circle r="26" fill="#1e293b" stroke="#38bdf8" stroke-width="2.5" filter="url(#nodeGlow)"/>
+    <text y="6" font-family="'Segoe UI', sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#38bdf8">1</text>
+    <text y="-38" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#e2e8f0">Brahman Evi</text>
+    <text y="-23" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#94a3b8">Teorik Doktrin</text>
+    <text y="45" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#64748b">Zihinsel Kibir &amp; Susuzluk</text>
+  </g>
+
+  <!-- 2. Durak: Samanalar -->
+  <g transform="translate(230, 140)">
+    <circle r="24" fill="#1e293b" stroke="#60a5fa" stroke-width="2.5"/>
+    <text y="6" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#60a5fa">2</text>
+    <text y="-35" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#e2e8f0">Samana Çilesi</text>
+    <text y="-21" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#94a3b8">Oruç &amp; Çile</text>
+    <text y="42" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#64748b">Benlikten Kaçış</text>
+  </g>
+
+  <!-- 3. Durak: Gotama Karşılaşması -->
+  <g transform="translate(370, 240)">
+    <circle r="26" fill="#1e293b" stroke="#818cf8" stroke-width="2.5" filter="url(#nodeGlow)"/>
+    <text y="6" font-family="'Segoe UI', sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#818cf8">3</text>
+    <text y="45" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#e2e8f0">Buda Gotama</text>
+    <text y="60" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#94a3b8">Öğretinin Reddi</text>
+    <text y="-38" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#64748b">Govinda kalır, o gider</text>
+  </g>
+
+  <!-- 4. Durak: Samsara Şehri -->
+  <g transform="translate(510, 140)">
+    <circle r="24" fill="#1e293b" stroke="#f43f5e" stroke-width="2.5"/>
+    <text y="6" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#f43f5e">4</text>
+    <text y="-35" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#e2e8f0">Samsara Şehri</text>
+    <text y="-21" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#94a3b8">Kamala &amp; Ticaret</text>
+    <text y="42" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#64748b">Arzu, Kumar &amp; Zenginlik</text>
+  </g>
+
+  <!-- 5. Durak: İntihar Eşiği -->
+  <g transform="translate(640, 240)">
+    <circle r="26" fill="#1e293b" stroke="#fb7185" stroke-width="2.5" filter="url(#nodeGlow)"/>
+    <text y="6" font-family="'Segoe UI', sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#fb7185">5</text>
+    <text y="45" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#e2e8f0">Çöküş &amp; İntihar</text>
+    <text y="60" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#94a3b8">Ölü Kuş Rüyası</text>
+    <text y="-38" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#64748b">Eski 'Ben'in Ölümü</text>
+  </g>
+
+  <!-- 6. Durak: Nehir ve Vasudeva -->
+  <g transform="translate(770, 140)">
+    <circle r="24" fill="#1e293b" stroke="#fbbf24" stroke-width="2.5"/>
+    <text y="6" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#fbbf24">6</text>
+    <text y="-35" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#e2e8f0">Nehir &amp; Vasudeva</text>
+    <text y="-21" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#94a3b8">Kayıkçılık</text>
+    <text y="42" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#64748b">Yargısız Dinleme</text>
+  </g>
+
+  <!-- 7. Durak: Baba Olmak & Yas -->
+  <g transform="translate(890, 240)">
+    <circle r="24" fill="#1e293b" stroke="#a78bfa" stroke-width="2.5"/>
+    <text y="6" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#a78bfa">7</text>
+    <text y="45" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#e2e8f0">Evlat İmtihanı</text>
+    <text y="60" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#94a3b8">Kamala'nın Vedası</text>
+    <text y="-38" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#64748b">Mülkiyetsiz Sevgi</text>
+  </g>
+
+  <!-- 8. Durak: Bütünleşme & OM -->
+  <g transform="translate(1010, 190)">
+    <circle r="30" fill="#064e3b" stroke="#34d399" stroke-width="3" filter="url(#nodeGlow)"/>
+    <text y="8" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#34d399">ॐ</text>
+    <text y="-42" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#6ee7b7">Bütünleşme</text>
+    <text y="-26" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#a7f3d0">Zamanın Sonu</text>
+    <text y="48" font-family="'Segoe UI', sans-serif" font-size="10" text-anchor="middle" fill="#34d399">Nehrin Tek Sesi: OM</text>
+  </g>
+
+  <!-- Alt Not -->
+  <rect x="250" y="325" width="600" height="32" rx="6" fill="#1e293b" opacity="0.6"/>
+  <text x="550" y="346" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="500" text-anchor="middle" fill="#94a3b8">
+    "Yol yukarı ve yol aşağı birdir ve aynıdır." — Herakleitos | Bireyleşme Çizgisi
+  </text>
+</svg>
