@@ -9,6 +9,8 @@ import sys
 import argparse
 import random
 import os
+import time
+import json
 
 # Windows konsol ve cp1254 uyumluluğu için UTF-8 stdout yapılandırması
 if hasattr(sys.stdout, 'reconfigure'):
@@ -138,6 +140,20 @@ QUOTES = [
         "insight": "Kayanın tekrar yuvarlanacağını bilsen dahi mücadele kalbini doyurmaya yeter."
     },
     {
+        "quote": "Rüzgâr mumu söndürür; ama yangını alevlendirir. Sen yangın ol, rüzgârı bekle.",
+        "author": "Nassim Nicholas Taleb, Antifragile",
+        "topic": "Antifrajillik",
+        "doc": "08-zihinsel-modeller-ve-felsefi-notasyonlar/02-antifrajillik-ve-amor-fati.md",
+        "insight": "Krizlerden kaçmaya çalışma; krizleri seni derinleştiren bir usta olarak kucakla."
+    },
+    {
+        "quote": "Nerede öleceğimi bilmek isterdim; böylece oraya hiç gitmezdim.",
+        "author": "Charlie Munger",
+        "topic": "İnversiyon (Via Negativa)",
+        "doc": "08-zihinsel-modeller-ve-felsefi-notasyonlar/04-inversiyon-ve-via-negativa.md",
+        "insight": "Nasıl başarılı olacağını düşünmeden önce, seni kesinlikle batıracak hataları hayatından çıkar."
+    },
+    {
         "quote": "Amor Fati: Kaderini sev. Sadece katlanmak değil, ondan kaçmamak değil, onu sevmek.",
         "author": "Friedrich Nietzsche",
         "topic": "Kusursuzluk Yanılgısı",
@@ -254,6 +270,18 @@ DEBUG_SCENARIOS = {
             "3. Kozmik Şefkate Genişle: Bireysel sevgiyi evrensel bir sevgiye dönüştür."
         ],
         "doc": "05-bireylesme-ve-varolus/04-ask-ve-ayrilik-kamalanin-vedasi.md"
+    },
+    "karma_korlugu": {
+        "title": "Kısa Vade Hazzı ve Karma Körlüğü (Second-Order Failure)",
+        "code": "ERR_SECOND_ORDER_BLINDNESS",
+        "symptoms": "Anlık rahatlıklar için gelecekteki huzuru satmak, 've sonra ne olacak?' sorusunu sormamak.",
+        "cause": "Birinci dereceden düşünmeye hapsolup sistemik yankıları görememek.",
+        "fix": [
+            "1. İkinci Dereceden Düşün: 'Ve sonra ne olacak?' sorusunu 3 kez ardışık sor.",
+            "2. Karma ilkesini hatırla: Ektiğin her tohum gecikmeli olarak kapına döner.",
+            "3. Anlık dopamin avcılığını bırak; uzun vadeli dinginliğe yatırım yap."
+        ],
+        "doc": "08-zihinsel-modeller-ve-felsefi-notasyonlar/01-ikinci-dereceden-dusunme-ve-karma.md"
     }
 }
 
@@ -285,6 +313,13 @@ PRACTICES = [
         "summary": "Günün en zor görevinde direnç göstermeyi bırak; suyun kayanın etrafından akışı gibi ilerle.",
         "rule": "Zorlama, acele etme; doğru anı bekle ve zahmetsizce bitir.",
         "doc": "07-gunluk-pratikler-ve-meditasyonlar/04-wu-wei-eylem-protokolu.md"
+    },
+    {
+        "title": "Via Negativa Yontma Egzersizi",
+        "category": "Zihinsel Sadeleşme",
+        "summary": "Hayatına yeni bir hedef eklemek yerine, huzurunu çalan tek bir alışkanlığı hayatından çıkar.",
+        "rule": "Michelangelo gibi fazlalığı yont; bilgelik eklemekle değil, eksiltmekle doğar.",
+        "doc": "08-zihinsel-modeller-ve-felsefi-notasyonlar/04-inversiyon-ve-via-negativa.md"
     }
 ]
 
@@ -373,6 +408,12 @@ TREE_DATA = [
         "02-golge-gunlugu-ve-yazma-egzersizleri.md",
         "03-stoaci-aksam-muhasebesi.md",
         "04-wu-wei-eylem-protokolu.md"
+    ]),
+    ("08-zihinsel-modeller-ve-felsefi-notasyonlar", "Bilişsel Modeller ve Düşünce Algoritmaları", [
+        "01-ikinci-dereceden-dusunme-ve-karma.md",
+        "02-antifrajillik-ve-amor-fati.md",
+        "03-occam-usturasi-ve-wu-wei.md",
+        "04-inversiyon-ve-via-negativa.md"
     ])
 ]
 
@@ -393,7 +434,7 @@ def cmd_debug(args):
         print(colorize("-" * 65, MAGENTA))
         print("Lütfen çözmek istediğiniz zihinsel durumu seçin:\n")
         for key, item in DEBUG_SCENARIOS.items():
-            print(f"  • {colorize(key.ljust(15), BOLD + GREEN)} : {item['title']}")
+            print(f"  • {colorize(key.ljust(18), BOLD + GREEN)} : {item['title']}")
         print(f"\nÖrnek kullanım: {colorize('python kendi_yolun.py debug dogma', YELLOW)}\n")
         return
 
@@ -418,6 +459,45 @@ def cmd_practice(args):
     print(f"📋 {colorize('Özet:', BOLD)} {p['summary']}")
     print(f"⚡ {colorize('Altın Kural:', BOLD + RED)} {p['rule']}")
     print(f"📖 {colorize('Uygulama Rehberi:', BLUE)} {p['doc']}\n")
+
+def cmd_meditate(args):
+    cycles = args.cycles if hasattr(args, 'cycles') and args.cycles else 1
+    print(colorize("\n" + "="*65, CYAN))
+    print(colorize("🌊 NEHİR NEFES PROTOKOLÜ (4-2-6)", BOLD + GREEN))
+    print(colorize("="*65, CYAN))
+    print("Sırtınızı dik tutun, gözlerinizi kapatmaya hazırlanın.")
+    print(f"Döngü Sayısı: {cycles} | Çıkmak için Ctrl+C\n")
+
+    try:
+        for c in range(1, cycles + 1):
+            print(colorize(f"--- Döngü {c}/{cycles} ---", BOLD + YELLOW))
+            # 1. Nefes Al (4 sn)
+            sys.stdout.write(colorize("🌿 [4 sn] Nefes Al  : ", CYAN))
+            for _ in range(4):
+                sys.stdout.write("● ")
+                sys.stdout.flush()
+                time.sleep(1)
+            print(" (Doldur)")
+
+            # 2. Tut (2 sn)
+            sys.stdout.write(colorize("⏳ [2 sn] Nefesi Tut: ", YELLOW))
+            for _ in range(2):
+                sys.stdout.write("■ ")
+                sys.stdout.flush()
+                time.sleep(1)
+            print(" (Hareketsiz kal)")
+
+            # 3. Ver (6 sn)
+            sys.stdout.write(colorize("🍃 [6 sn] Yavaşça Ver: ", GREEN))
+            for _ in range(6):
+                sys.stdout.write("○ ")
+                sys.stdout.flush()
+                time.sleep(1)
+            print(" (Serbest bırak)\n")
+
+        print(colorize("✨ Pratik tamamlandı. Nehir gibi dingin ve mevcudiyette kal.", BOLD + GREEN))
+    except KeyboardInterrupt:
+        print(colorize("\nPratik erken durduruldu. Huzurla kal.", YELLOW))
 
 def cmd_journal(args):
     jtype = args.type.lower() if args.type else "stoic"
@@ -454,6 +534,26 @@ Tarih: ______________
 """)
     print(f"Detaylı pratik için: {colorize('07-gunluk-pratikler-ve-meditasyonlar/', BLUE)}\n")
 
+def cmd_export(args):
+    fmt = args.format.lower() if args.format else "json"
+    if fmt == "json":
+        data = {
+            "title": "Kendi Yolun - Felsefe Arşivi",
+            "modules_count": len(TREE_DATA),
+            "quotes_count": len(QUOTES),
+            "scenarios_count": len(DEBUG_SCENARIOS),
+            "modules": [{"folder": f, "title": t, "docs": d} for f, t, d in TREE_DATA],
+            "quotes": QUOTES
+        }
+        print(json.dumps(data, ensure_ascii=False, indent=2))
+    else:
+        print("# Kendi Yolun - Arşiv Dökümü\n")
+        for folder, title, files in TREE_DATA:
+            print(f"## {folder} — {title}")
+            for f in files:
+                print(f"- {f}")
+            print()
+
 def cmd_search(args):
     query = args.query.lower() if args.query else ""
     if not query:
@@ -486,7 +586,7 @@ def cmd_search(args):
                 print(f"\n📄 [Arşiv Belgesi] {colorize(folder + '/' + f, GREEN)} ({title})")
 
     if found == 0:
-        print(f"'{query}' terimiyle eşleşen içerik bulunamadı. Başka bir kavram deneyin (örn: nehir, zaman, gölge, aşk, ölüm).")
+        print(f"'{query}' terimiyle eşleşen içerik bulunamadı. Başka bir kavram deneyin (örn: nehir, zaman, gölge, aşk, ölüm, karma).")
     else:
         print(colorize(f"\nToplam {found} eşleşme bulundu.\n", GREEN))
 
@@ -504,7 +604,7 @@ def cmd_matrix(args):
     print(f"Detaylı doküman için: {colorize('04-kavram-haritalari/01-capraz-ogreti-matrisi.md', BLUE)}\n")
 
 def cmd_explore(args):
-    print(colorize("\n🍃 KENDİ YOLUN GENİŞLETİLMİŞ ARŞİV HARİTASI (7 MODÜL, 28 METİN)", BOLD + GREEN))
+    print(colorize("\n🍃 KENDİ YOLUN GENİŞLETİLMİŞ ARŞİV HARİTASI (8 MODÜL, 32 METİN)", BOLD + GREEN))
     print(colorize("=" * 70, GREEN))
     for folder, title, files in TREE_DATA:
         print(f"\n📂 {colorize(folder, BOLD + CYAN)} — {title}")
@@ -532,14 +632,24 @@ def main():
     sub_practice = subparsers.add_parser("practice", help="Günlük felsefi pratik ve meditasyon önerisi")
     sub_practice.set_defaults(func=cmd_practice)
 
+    # meditate
+    sub_meditate = subparsers.add_parser("meditate", help="Terminal nefes meditasyon protokolü")
+    sub_meditate.add_argument("-c", "--cycles", type=int, default=1, help="Nefes döngüsü sayısı (varsayılan: 1)")
+    sub_meditate.set_defaults(func=cmd_meditate)
+
     # journal
     sub_journal = subparsers.add_parser("journal", help="Stoacı veya gölge çalışması günlük şablonu üretir")
     sub_journal.add_argument("type", nargs="?", choices=["stoic", "shadow"], default="stoic", help="Günlük tipi (stoic / shadow)")
     sub_journal.set_defaults(func=cmd_journal)
 
+    # export
+    sub_export = subparsers.add_parser("export", help="Felsefi arşiv veya şablon dökümünü dışa aktarır")
+    sub_export.add_argument("format", nargs="?", choices=["json", "md"], default="json", help="Dışa aktarma formatı (json / md)")
+    sub_export.set_defaults(func=cmd_export)
+
     # search
     sub_search = subparsers.add_parser("search", help="Arşiv ve kavramlar arasında akıllı arama")
-    sub_search.add_argument("query", help="Aranacak terim (örn: zaman, gölge, ölüm, tao)")
+    sub_search.add_argument("query", help="Aranacak terim (örn: zaman, gölge, ölüm, tao, karma)")
     sub_search.set_defaults(func=cmd_search)
 
     # matrix

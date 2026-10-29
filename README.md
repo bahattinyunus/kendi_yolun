@@ -5,14 +5,28 @@
 > *"Bu benim yolum. Seninki nerede? Çünkü mutlak bir 'yol' diye bir şey yoktur!" — Friedrich Nietzsche, Böyle Buyurdu Zerdüşt*
 
 [![Python](https://img.shields.io/badge/CLI_Engine-Python_3.8+-3776AB?style=flat-square&logo=python&logoColor=white)](kendi_yolun.py)
-[![Architecture](https://img.shields.io/badge/Mimari-7_Modül_%7C_28_Derin_Metin-blueviolet?style=flat-square)](#-genişletilmiş-depo-mimarisi-7-modül-28-metin)
-[![Felsefe](https://img.shields.io/badge/Disiplinler-Varoluşçuluk_%7C_Taoizm_%7C_Jung_%7C_Stoacılık_%7C_Zen-orange?style=flat-square)](#-büyük-tematik-alıntılar-antolojisi)
-[![Tests](https://img.shields.io/badge/Birim_Testler-11_Geçti_(%25100)-brightgreen?style=flat-square)](test_kendi_yolun.py)
-[![Status](https://img.shields.io/badge/Durum-Eksiksiz_%7C_Doğrulanmış-success?style=flat-square)](#-etkileşimli-felsefe-motoru-kendi_yolunpy)
+[![Architecture](https://img.shields.io/badge/Mimari-8_Modül_%7C_32_Derin_Metin-blueviolet?style=flat-square)](#-genişletilmiş-depo-mimarisi-8-modül-32-metin)
+[![Web_Portal](https://img.shields.io/badge/Web_Portalı-Canlı_ve_İnteraktif-4f46e5?style=flat-square&logo=html5&logoColor=white)](index.html)
+[![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions_%7C_Pages-success?style=flat-square&logo=githubactions&logoColor=white)](.github/workflows/ci.yml)
+[![Tests](https://img.shields.io/badge/Birim_Testler-12_Geçti_(%25100)-brightgreen?style=flat-square)](test_kendi_yolun.py)
+[![Felsefe](https://img.shields.io/badge/Disiplinler-Varoluşçuluk_%7C_Taoizm_%7C_Jung_%7C_Stoacılık_%7C_Bilişsel-orange?style=flat-square)](#-büyük-tematik-alıntılar-antolojisi)
 
 <p align="center">
   <img src="assets/hero-banner.jpg" alt="Kendi Yolun: Siddhartha Nehir Kıyısında Tefekkür" width="100%" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.5);" />
 </p>
+
+---
+
+## 🌐 Canlı Web Portalı & İnteraktif Deneyim (`index.html`)
+
+Arşiv, tarayıcınızda doğrudan açabileceğiniz veya GitHub Pages üzerinden erişebileceğiniz modern bir tek sayfa uygulaması (**SPA**) içerir:
+* **🗺 İnteraktif Zaman Çizelgesi:** Siddhartha'nın 8 durağını tıklayarak dersleri ve alıntıları keşfedin.
+* **🛠 Tarayıcı İçi Felsefi Debugger:** Zihinsel durumunuzu seçip anında teşhis ve refactoring adımları alın.
+* **🧘 Nehir Nefes Zamanlayıcısı (4-2-6):** Zihni sakinleştiren animasyonlu nefes dairesi.
+* **🌊 Web Audio API Sentetik Ambiyans:** Harici ses dosyası olmadan, tarayıcınızın matematiksel olarak ürettiği 432 Hz Tibet çanı ve nehir akıntısı pembe gürültüsü (*Pink Noise*).
+* **🔍 Anlık Arama Motoru:** 8 modül ve 32 metin arasında gerçek zamanlı dinamik arama.
+
+👉 **Kullanım:** Proje dizinindeki [`index.html`](file:///g:/Diğer%20bilgisayarlar/Dizüstü%20Bilgisayarım/github%20repolarım/kendi_yolun/index.html) dosyasını herhangi bir web tarayıcısında açmanız yeterlidir (sıfır kurulum, yerel çalışır).
 
 ---
 
@@ -274,8 +288,17 @@ kendi_yolun/
 │   ├── 03-stoaci-aksam-muhasebesi.md      # 3 aşamalı Seneca/Marcus Aurelius filtresi
 │   └── 04-wu-wei-eylem-protokolu.md       # Sürtünmesiz karar alma ve eylem adımları
 │
+├── 08-zihinsel-modeller-ve-felsefi-notasyonlar/ # Bilişsel modeller ve düşünce algoritmaları
+│   ├── README.md                          # Bölüm manifestosu
+│   ├── 01-ikinci-dereceden-dusunme-ve-karma.md # İkinci dereceden düşünme & Karma döngüsü
+│   ├── 02-antifrajillik-ve-amor-fati.md   # Taleb antifrajilliği ve Nietzsche Amor Fati
+│   ├── 03-occam-usturasi-ve-wu-wei.md     # Occam usturası ve eylemsel sadelik
+│   └── 04-inversiyon-ve-via-negativa.md   # İnversiyon modeli & Neti Neti yontması
+│
+├── .github/workflows/ci.yml               # GitHub Actions CI ve Pages dağıtım hattı
+├── index.html                             # İnteraktif Web Portalı & Canlı Deneyim
 ├── kendi_yolun.py                         # Etkileşimli CLI ve Felsefi Debug Motoru
-├── test_kendi_yolun.py                    # 11 otomatik birim test paketi
+├── test_kendi_yolun.py                    # 12 otomatik birim test paketi
 ├── .gitattributes                         # UTF-8 ve EOL yapılandırması
 ├── .gitignore                             # Temiz repo hijyeni
 └── README.md                              # Ana manifesto ve ansiklopedik rehber
@@ -363,24 +386,32 @@ python kendi_yolun.py debug olum_kaygisi   # Ölüm düşüncesi ve geçicilik p
 python kendi_yolun.py debug anlamsizlik    # Absürt boşluk ve amaç kaybı
 python kendi_yolun.py debug suru_baskisi   # Elalem ne der ve sürüye boyun eğme
 python kendi_yolun.py debug ask_acisi      # Mülkiyetçi bağlanma ve kayıp acısı
+python kendi_yolun.py debug karma_korlugu  # Kısa vade hazzı ve ikinci derece düşünme eksikliği
 
 # 🧘 3. Günlük meditasyon veya bilgelik pratiği önerisi al
 python kendi_yolun.py practice
 
-# 📝 4. Felsefi günlük yazma şablonu oluştur (Markdown terminal çıktısı)
+# 🌊 4. Terminalde canlı ritimli nefes meditasyonu başlat (4-2-6 protokolü)
+python kendi_yolun.py meditate --cycles 3
+
+# 📝 5. Felsefi günlük yazma şablonu oluştur (Markdown terminal çıktısı)
 python kendi_yolun.py journal stoic        # Stoacı akşam muhasebesi şablonu
 python kendi_yolun.py journal shadow       # Jungiyen 10 gölge sorusu şablonu
 
-# 🔍 5. Tüm arşiv, aforizmalar ve teşhisler içinde akıllı kelime araması
+# 💾 6. Felsefi verileri ve arşiv haritasını dışa aktar (JSON veya Markdown)
+python kendi_yolun.py export json
+python kendi_yolun.py export md
+
+# 🔍 7. Tüm arşiv, aforizmalar ve teşhisler içinde akıllı kelime araması
 python kendi_yolun.py search nehir
+python kendi_yolun.py search karma
 python kendi_yolun.py search ölüm
 python kendi_yolun.py search gölge
-python kendi_yolun.py search wu-wei
 
-# 📊 6. 5 Temel felsefi ekolün karşılaştırmalı matrisini görüntüle
+# 📊 8. 5 Temel felsefi ekolün karşılaştırmalı matrisini görüntüle
 python kendi_yolun.py matrix
 
-# 📂 7. 7 Modül ve 28 metinden oluşan arşiv haritasını terminalde keşfet
+# 📂 9. 8 Modül ve 32 metinden oluşan arşiv haritasını terminalde keşfet
 python kendi_yolun.py explore
 ```
 

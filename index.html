@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kendi Yolun: Deneyimsel Bilgelik ve Karşılaştırmalı Felsefe Portalı 🍃</title>
+  <link rel="icon" href="assets/hero-banner.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1f293d;
+      --text: #f3f4f6;
+      --text-muted: #94a3b8;
+      --primary: #818cf8;
+      --accent: #fbbf24;
+      --teal: #34d399;
+      --rose: #f43f5e;
+      --gold: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Header */
+    header {
+      position: relative;
+      background: linear-gradient(180deg, rgba(17,24,39,0.95) 0%, rgba(9,13,22,0.98) 100%);
+      border-bottom: 1px solid var(--card-border);
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+    }
+    .hero-img {
+      max-width: 900px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.6);
+      margin-bottom: 2rem;
+      border: 1px solid var(--card-border);
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 50%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .quote-banner {
+      max-width: 750px;
+      margin: 0 auto 1.5rem;
+      padding: 1rem 1.5rem;
+      background: rgba(30, 41, 59, 0.5);
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      font-style: italic;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* Section styling */
+    section {
+      margin-bottom: 3.5rem;
+    }
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 2px solid var(--card-border);
+      padding-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    /* Controls & Audio Bar */
+    .audio-bar {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      background: #1e293b;
+      color: #f8fafc;
+      border: 1px solid var(--card-border);
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+    }
+    .btn:hover {
+      background: #334155;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .btn-primary {
+      background: #4f46e5;
+      border-color: #6366f1;
+    }
+    .btn-primary:hover {
+      background: #4338ca;
+    }
+
+    /* Interactive Timeline */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .stage-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .stage-card:hover, .stage-card.active {
+      border-color: var(--accent);
+      background: #172136;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .stage-number {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      background: rgba(129, 140, 248, 0.15);
+      color: var(--primary);
+      font-weight: bold;
+      border-radius: 50%;
+      margin-bottom: 0.75rem;
+      font-size: 0.85rem;
+    }
+    .stage-card.active .stage-number {
+      background: var(--accent);
+      color: #0f172a;
+    }
+    .stage-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 0.25rem;
+    }
+    .stage-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Stage Detail Panel */
+    .stage-detail {
+      background: #141e33;
+      border: 1px solid var(--primary);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Debugger Section */
+    .debug-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 1.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .debug-grid { grid-template-columns: 1fr; }
+    }
+    .debug-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .debug-item {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      background: #172136;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .debug-item:hover, .debug-item.active {
+      border-color: var(--rose);
+      background: #231d28;
+      color: #fecdd3;
+    }
+    .debug-panel {
+      background: #0d121f;
+      border: 1px solid #2d3748;
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+    .error-code {
+      font-family: monospace;
+      color: var(--rose);
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    .solution-box {
+      margin-top: 1rem;
+      background: rgba(52, 211, 153, 0.08);
+      border-left: 3px solid var(--teal);
+      padding: 0.85rem 1rem;
+      border-radius: 4px;
+    }
+
+    /* Meditation Timer */
+    .breath-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      text-align: center;
+    }
+    .breath-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(129,140,248,0.4) 0%, rgba(99,102,241,0.1) 70%);
+      border: 3px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin: 1.5rem auto;
+      transition: transform 4s ease-in-out;
+    }
+    .breath-circle.inhale {
+      transform: scale(1.45);
+      border-color: var(--teal);
+    }
+    .breath-circle.hold {
+      transform: scale(1.45);
+      border-color: var(--accent);
+    }
+    .breath-circle.exhale {
+      transform: scale(1.0);
+      border-color: var(--rose);
+    }
+
+    /* Search Box */
+    .search-bar {
+      width: 100%;
+      padding: 0.9rem 1.25rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      outline: none;
+    }
+    .search-bar:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.25);
+    }
+
+    /* Modules Accordion */
+    .module-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+    .module-header {
+      padding: 1rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .module-header:hover {
+      background: #172136;
+    }
+    .module-body {
+      padding: 1rem 1.25rem;
+      border-top: 1px solid var(--card-border);
+      background: #0c111c;
+      display: none;
+    }
+    .module-body.open {
+      display: block;
+    }
+    .doc-link {
+      display: block;
+      padding: 0.35rem 0;
+      color: #cbd5e1;
+      font-size: 0.92rem;
+    }
+    .doc-link:hover {
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="assets/hero-banner.jpg" alt="Siddhartha Nehir Tefekkürü" class="hero-img">
+    <h1>KENDİ YOLUN</h1>
+    <div class="subtitle">Deneyimsel Bilgelik ve Karşılaştırmalı Felsefe Portalı</div>
+    <div class="quote-banner" id="randomQuoteBanner">
+      "Bilgi aktarılabilir ama bilgelik aktarılamaz. Bilgelik bulunabilir, yaşanabilir... ama söylenemez ve öğretilemez."
+      <div style="font-weight: 600; color: var(--accent); margin-top: 0.5rem;">— Hermann Hesse, Siddhartha</div>
+    </div>
+
+    <!-- Audio Ambient Controls -->
+    <div class="audio-bar">
+      <button class="btn btn-primary" id="btnSound">
+        <span id="soundIcon">🔊</span> <span id="soundText">Nehir Ambiyansı (Ses Başlat)</span>
+      </button>
+      <button class="btn" id="btnChime">🔔 Tibet Çanı Çal</button>
+      <button class="btn" id="btnNewQuote">📜 Yeni Aforizma Al</button>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- 1. SİDDHARTHA'NIN 8 DURAĞI (İNTERAKTİF HARİTA) -->
+    <section>
+      <div class="section-title">
+        <span>🗺</span> Siddhartha'nın 8 Dönüşüm Eşiği
+      </div>
+      <div class="timeline" id="stageTimeline"></div>
+      <div class="stage-detail" id="stageDetailPanel"></div>
+    </section>
+
+    <!-- 2. ZİHİNSEL HATA AYIKLAMA (DEBUGGER) -->
+    <section>
+      <div class="section-title">
+        <span>🛠</span> Zihinsel Hata Ayıklama (Philosophical Debugger)
+      </div>
+      <div class="debug-grid">
+        <div class="debug-list" id="debugList"></div>
+        <div class="debug-panel" id="debugPanel"></div>
+      </div>
+    </section>
+
+    <!-- 3. NEFES MEDİTASYONU ZAMANLAYICISI -->
+    <section>
+      <div class="section-title">
+        <span>🧘</span> Nehir Nefes Pratiği (4-2-6 Protokolü)
+      </div>
+      <div class="breath-box">
+        <p style="color: var(--text-muted); max-width: 600px; margin-bottom: 1rem;">
+          Zihnin geçmiş ve gelecek dalgalanmalarını durdurmak için nehrin ritmine uyum sağlayın.
+        </p>
+        <div class="breath-circle" id="breathCircle">Hazır</div>
+        <div id="breathInstruction" style="font-size: 1.1rem; font-weight: 600; color: var(--accent);">Başlamak için butona tıklayın</div>
+        <button class="btn btn-primary" id="btnBreathToggle" style="margin-top: 1.5rem;">Nefes Pratiğini Başlat</button>
+      </div>
+    </section>
+
+    <!-- 4. TÜM MODÜLLER VE BELGELER ARAMA & ARŞİVİ -->
+    <section>
+      <div class="section-title">
+        <span>📂</span> 8 Modül ve 32 Derin Metin Arşivi
+      </div>
+      <input type="text" id="searchInput" class="search-bar" placeholder="Arşiv içinde ara (örn: nehir, zaman, gölge, ölüm, karma, wu-wei)...">
+      <div id="modulesContainer"></div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>🍃 <b>Kendi Yolun</b> — Açık Kaynaklı Varoluşsal Bilgelik ve Zihinsel İşletim Sistemi.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #64748b;">
+      "Okumak veri almaktır; yazmak ve analiz etmek ise modeli eğitmektir."
+    </p>
+  </footer>
+
+  <script>
+    // --- VERİ TABANI ---
+    const STAGES = [
+      {
+        id: 1, name: "Brahman Evi", sub: "Teorik Kutsallık",
+        summary: "Siddhartha kutsal Vedaları ezberlemiş saygın bir rahip oğluydu. Ancak bilge babası dahi Atman'ı bulamamıştı.",
+        lesson: "Ezberlenmiş kavramlar susuzluğu dindirmez; hakikat teoride değil yaşantıda yatar.",
+        doc: "01-ogretilerin-reddi/01-budanin-yolu-ve-sinirlari.md"
+      },
+      {
+        id: 2, name: "Samana Çilesi", sub: "Benlikten Kaçış",
+        summary: "Yıllarca aç kaldı, nefesini tuttu, bedenini cezalandırdı. Ancak bu çile benliği aşmak değil, sadece benlikten uyuşturucu gibi geçici kaçıştı.",
+        lesson: "Bedeni düşman sayan asketizm insanı kâmil yapmaz; sadece uyuşturur.",
+        doc: "01-ogretilerin-reddi/03-ustanin-yolunu-terk-etmek.md"
+      },
+      {
+        id: 3, name: "Buda Gotama", sub: "Öğretinin Reddi",
+        summary: "Yaşayan Buda ile karşılaştı. Öğreti kusursuzdu ama Gotama kendi uyanışını bir öğretiyi dinleyerek bulmamıştı. Govinda cübbeyi giydi, Siddhartha yoluna gitti.",
+        lesson: "Kişi kendi yolunu bulmak için ustanın elini bırakmak zorundadır.",
+        doc: "01-ogretilerin-reddi/01-budanin-yolu-ve-sinirlari.md"
+      },
+      {
+        id: 4, name: "Samsara Şehri", sub: "Kamala & Kamaswami",
+        summary: "Aşk sanatçısı Kamala ve tüccar Kamaswami ile şehre daldı. Altınlar, zarlar, kumar ve şarap. Başlangıçta oyun sandığı Samsara onu yavaş yavaş esir aldı.",
+        lesson: "Bastırılmış gölge yeraltında büyür ve günün birinde bilinci esir alır.",
+        doc: "02-samsara-ve-golge/01-kamala-ve-kamaswami-maddiyat-ve-arzu.md"
+      },
+      {
+        id: 5, name: "İntihar Eşiği", sub: "Kafesteki Ölü Kuş",
+        summary: "Rüyasında kafesteki kuşun öldüğünü gördü. Her şeyi terk edip nehir kıyısında bir ağaç dalına eğildi. İntihar etmek üzereyken nehrin sesinde 'OM' uyanışı yankılandı.",
+        lesson: "Eski kibirli kimlik ölmeden yeni bilge varlık doğamaz.",
+        doc: "02-samsara-ve-golge/03-lotus-ve-camur.md"
+      },
+      {
+        id: 6, name: "Nehir & Vasudeva", sub: "Dinleme Sanatı",
+        summary: "Okuma yazması olmayan kayıkçı Vasudeva ile yaşadı. Nehir ona zamanın bir illüzyon olduğunu ve suyun her koordinatta aynı anda var olduğunu öğretti.",
+        lesson: "Yargılamadan dinleyen insan egoyu eritir ve sonsuz 'Şimdi'ye kavuşur.",
+        doc: "03-nehir-zaman-ve-tao/01-vasudeva-ve-dinleme-sanati.md"
+      },
+      {
+        id: 7, name: "Baba Olmak & Yas", sub: "Kamala'nın Vedası",
+        summary: "Kamala yılan zehriyle kollarında öldü. Şımarık oğlu şehre kaçtı. Siddhartha oğlunu korumak istedi ama nehir hatırlattı: 'Hangi öğreti bir insanı kendi kaderinden kurtarabilmiş?'",
+        lesson: "Sevgi tutunmak değil; sevdiklerinin kendi acılarını çekme hakkına saygı duymaktır.",
+        doc: "05-bireylesme-ve-varolus/04-ask-ve-ayrilik-kamalanin-vedasi.md"
+      },
+      {
+        id: 8, name: "Aydınlanma (OM)", sub: "Ebedi Birlik",
+        summary: "Nehrin binlerce sesinin (gülenler, ağlayanlar, katiller, ermişler) tek bir seste birleştiğini duydu. Dostu Govinda onun alnından öptüğünde Siddhartha'nın yüzünde Buda'nın tebessümünü gördü.",
+        lesson: "Her şey birdir; geçmiş ve gelecek bu ânın içinde barışır.",
+        doc: "03-nehir-zaman-ve-tao/02-zamanin-illuzyonu-ve-ebedi-simdi.md"
+      }
+    ];
+
+    const SCENARIOS = {
+      dogma: {
+        title: "Dogma ve Otorite Bağımlılığı",
+        code: "ERR_DOGMA_INFINITY_LOOP",
+        symptoms: "Başkalarının kitaplarına sığınma, kendi yaşantısına güvenememe, şüphe duymaktan korkma.",
+        cause: "Belirsizlik korkusu nedeniyle zihnin hazır haritalara teslim olması.",
+        fix: ["1. Harita arazinin kendisi değildir.", "2. Gotama'nın yalnız yürüdüğünü hatırla.", "3. Kendi deneyimsel verini topla."],
+        doc: "01-ogretilerin-reddi/01-budanin-yolu-ve-sinirlari.md"
+      },
+      golge: {
+        title: "Gölge İnkarı ve Kusursuzluk Tuzağı",
+        code: "ERR_SHADOW_OVERFLOW",
+        symptoms: "Başkalarının kusurlarına aşırı öfke, aşırı ahlaklı görünme çabası, içsel suçluluk.",
+        cause: "Kendi karanlığını ve zaaflarını bastırıp sadece Persona ile özdeşleşmek.",
+        fix: ["1. Ayna İlkesi: Öfkelendiğin kişide kendi gölgeni tanı.", "2. Çamursuz lotus açmaz.", "3. Enantiodromia tehlikesini gör."],
+        doc: "02-samsara-ve-golge/02-jung-ve-golge-arketipi.md"
+      },
+      zaman: {
+        title: "Zaman İllüzyonu ve Gelecek Kaygısı",
+        code: "ERR_FUTURE_DEADLOCK",
+        symptoms: "Şimdiki anı gelecekteki bir amaca kurban etmek, sürekli telaş ve pişmanlık.",
+        cause: "Zihnin doğrusal zaman kurgusuna tutsak olup ebedi şimdiyi ıskalaması.",
+        fix: ["1. Nehir Ontolojisi: Su aynı anda her yerdedir.", "2. Marcus Aurelius: Yalnızca şu anki nefesin sana aittir.", "3. 'Bir gün her şey düzelecek' masalını bırak."],
+        doc: "03-nehir-zaman-ve-tao/02-zamanin-illuzyonu-ve-ebedi-simdi.md"
+      },
+      kontrol: {
+        title: "Aşırı Kontrol ve Direnç Tuzağı",
+        code: "ERR_CONTROL_FRICTION",
+        symptoms: "Her şeyi planlama takıntısı, aksaklıklara öfke, tükenmişlik.",
+        cause: "Egonun evrenden ayrı ve ona hükmeden bir güç olduğunu sanması.",
+        fix: ["1. Wu-Wei uygula: Akıntıya karşı değil, akıntıyla birlikte hareket et.", "2. Su gibi ol: Engellerle kavga etme, etrafından dolan.", "3. Sevdiklerini kontrol etmeyi bırak."],
+        doc: "03-nehir-zaman-ve-tao/03-wu-wei-ve-zahmetsiz-eylem.md"
+      },
+      tukenmislik: {
+        title: "Samsara Hastalığı ve Anlamsızlık",
+        code: "ERR_SAMSARA_BURNOUT",
+        symptoms: "Başarıya ulaştığın halde ruhsal boşluk, içsel kuraklık.",
+        cause: "Kafesteki ötücü kuşun altın kafeste nefessiz kalması.",
+        fix: ["1. Bu depresyon değil; sahte bir hayatın iflasıdır.", "2. Yüklerini nehir kıyısında bırak.", "3. Vasudeva gibi dinlemeye başla."],
+        doc: "02-samsara-ve-golge/01-kamala-ve-kamaswami-maddiyat-ve-arzu.md"
+      },
+      olum_kaygisi: {
+        title: "Ölüm Kaygısı ve Geçicilik Şoku",
+        code: "ERR_MORTALITY_PANIC",
+        symptoms: "Ölüm düşüncesiyle felç olma, yaşlanma korkusu.",
+        cause: "Egonun kalıcı bir mülk olduğunu sanması ve kaçınılmaz sonu inkarı.",
+        fix: ["1. Heidegger: Ölüm bilinci hayatı değersizleştirmez, biricik kılar.", "2. Nehirdeki su yok olmaz, bulut ve yağmur olur.", "3. Memento Mori."],
+        doc: "05-bireylesme-ve-varolus/03-olum-bilinci-ve-otantik-yasam.md"
+      }
+    };
+
+    const MODULES = [
+      {
+        folder: "01-ogretilerin-reddi",
+        title: "Zihnin ve Dogmaların Aşılması",
+        docs: [
+          "01-budanin-yolu-ve-sinirlari.md",
+          "02-soze-dokulenin-sahtelesmesi.md",
+          "03-ustanin-yolunu-terk-etmek.md",
+          "04-sokratik-bilgisizlik-ve-bos-kadeh.md"
+        ]
+      },
+      {
+        folder: "02-samsara-ve-golge",
+        title: "Beden, Arzu ve Gölgenin İntegrasyonu",
+        docs: [
+          "01-kamala-ve-kamaswami-maddiyat-ve-arzu.md",
+          "02-jung-ve-golge-arketipi.md",
+          "03-lotus-ve-camur.md",
+          "04-arzu-takintisi-ve-schopenhauer.md"
+        ]
+      },
+      {
+        folder: "03-nehir-zaman-ve-tao",
+        title: "Bütünleşme, Nehir ve Wu-Wei Bilgeliği",
+        docs: [
+          "01-vasudeva-ve-dinleme-sanati.md",
+          "02-zamanin-illuzyonu-ve-ebedi-simdi.md",
+          "03-wu-wei-ve-zahmetsiz-eylem.md",
+          "04-anlik-farkindalik-ve-zen-ustaligi.md"
+        ]
+      },
+      {
+        folder: "04-kavram-haritalari",
+        title: "Algoritmalar, Matrisler ve Sözlük",
+        docs: [
+          "01-capraz-ogreti-matrisi.md",
+          "02-felsefi-algoritmalar-ve-hata-ayiklama.md",
+          "03-sozluk-ve-kavramlar.md",
+          "04-varolussal-kriz-rehberi.md"
+        ]
+      },
+      {
+        folder: "05-bireylesme-ve-varolus",
+        title: "Kalabalıktan Ayrılma ve Özgürleşme",
+        docs: [
+          "01-birey-olma-korkusu-ve-suru-psikolojisi.md",
+          "02-kendini-gerceklestirme-ve-kahramanin-yolculugu.md",
+          "03-olum-bilinci-ve-otantik-yasam.md",
+          "04-ask-ve-ayrilik-kamalanin-vedasi.md"
+        ]
+      },
+      {
+        folder: "06-karsilastirmali-metin-okumalari",
+        title: "Edebi ve Felsefi Paralellikler",
+        docs: [
+          "01-siddhartha-ve-bozkirkurdu-karsilastirmasi.md",
+          "02-dostoyevski-yeraltindan-notlar-ve-samsara.md",
+          "03-spinoza-etik-ve-nehirdeki-tanri.md",
+          "04-albert-camus-sisifos-soyleni-ve-anlamsizlik.md"
+        ]
+      },
+      {
+        folder: "07-gunluk-pratikler-ve-meditasyonlar",
+        title: "Uygulamalı Bilgelik Protokolleri",
+        docs: [
+          "01-nehir-meditasyonu-rehberi.md",
+          "02-golge-gunlugu-ve-yazma-egzersizleri.md",
+          "03-stoaci-aksam-muhasebesi.md",
+          "04-wu-wei-eylem-protokolu.md"
+        ]
+      },
+      {
+        folder: "08-zihinsel-modeller-ve-felsefi-notasyonlar",
+        title: "Bilişsel Modeller ve Düşünce Algoritmaları",
+        docs: [
+          "01-ikinci-dereceden-dusunme-ve-karma.md",
+          "02-antifrajillik-ve-amor-fati.md",
+          "03-occam-usturasi-ve-wu-wei.md",
+          "04-inversiyon-ve-via-negativa.md"
+        ]
+      }
+    ];
+
+    const ALL_QUOTES = [
+      { text: "Bilgi aktarılabilir ama bilgelik aktarılamaz. Bilgelik bulunabilir, yaşanabilir... ama söylenemez.", author: "Hermann Hesse" },
+      { text: "Bu benim yolum. Seninki nerede? Çünkü mutlak bir 'yol' diye bir şey yoktur!", author: "Friedrich Nietzsche" },
+      { text: "Söze dökülebilen Tao, mutlak Tao değildir.", author: "Lao Tzu" },
+      { text: "Kişi ışık figürleri hayal ederek değil, karanlığı bilincine katarak aydınlanır.", author: "Carl Gustav Jung" },
+      { text: "Hayat, bir sarkaç gibi ıstırap ile can sıkıntısı arasında gidip gelir.", author: "Arthur Schopenhauer" },
+      { text: "Zaman olayların şiddetli bir nehridir; görünür görünmez sürüklenip gider.", author: "Marcus Aurelius" },
+      { text: "Su gibi ol dostum; su akabilir de, yıkabilir de.", author: "Bruce Lee" },
+      { text: "Sisifos'u tepeye tırmanırken mutlu hayal etmek gerekir.", author: "Albert Camus" },
+      { text: "Çamur olmasaydı lotus çiçeği nerede kök salıp açardı?", author: "Thich Nhat Hanh" }
+    ];
+
+    // --- TIMELINE YÖNETİMİ ---
+    const timelineEl = document.getElementById("stageTimeline");
+    const detailEl = document.getElementById("stageDetailPanel");
+
+    function renderTimeline() {
+      timelineEl.innerHTML = "";
+      STAGES.forEach(s => {
+        const card = document.createElement("div");
+        card.className = "stage-card" + (s.id === 1 ? " active" : "");
+        card.innerHTML = `
+          <div class="stage-number">${s.id}</div>
+          <div class="stage-name">${s.name}</div>
+          <div class="stage-desc">${s.sub}</div>
+        `;
+        card.onclick = () => selectStage(s.id);
+        timelineEl.appendChild(card);
+      });
+      showStageDetail(1);
+    }
+
+    function selectStage(id) {
+      document.querySelectorAll(".stage-card").forEach((c, idx) => {
+        c.classList.toggle("active", idx + 1 === id);
+      });
+      showStageDetail(id);
+    }
+
+    function showStageDetail(id) {
+      const s = STAGES.find(x => x.id === id);
+      detailEl.innerHTML = `
+        <h3 style="color: var(--accent); margin-bottom: 0.5rem;">${s.id}. Durak: ${s.name} (${s.sub})</h3>
+        <p style="margin-bottom: 1rem; color: #e2e8f0; font-size: 1.05rem;">${s.summary}</p>
+        <div style="background: rgba(129,140,248,0.1); border-left: 3px solid var(--primary); padding: 0.75rem 1rem; border-radius: 4px; margin-bottom: 1rem;">
+          <b>💡 Varoluşsal Ders:</b> ${s.lesson}
+        </div>
+        <a href="${s.doc}" target="_blank" style="font-weight: 600;">📖 Detaylı Tahlili Oku &rarr;</a>
+      `;
+    }
+
+    // --- DEBUGGER YÖNETİMİ ---
+    const debugListEl = document.getElementById("debugList");
+    const debugPanelEl = document.getElementById("debugPanel");
+
+    function renderDebugger() {
+      debugListEl.innerHTML = "";
+      const keys = Object.keys(SCENARIOS);
+      keys.forEach((k, idx) => {
+        const item = document.createElement("div");
+        item.className = "debug-item" + (idx === 0 ? " active" : "");
+        item.innerText = SCENARIOS[k].title;
+        item.onclick = () => selectDebug(k);
+        debugListEl.appendChild(item);
+      });
+      showDebugPanel(keys[0]);
+    }
+
+    function selectDebug(key) {
+      const keys = Object.keys(SCENARIOS);
+      document.querySelectorAll(".debug-item").forEach((el, idx) => {
+        el.classList.toggle("active", keys[idx] === key);
+      });
+      showDebugPanel(key);
+    }
+
+    function showDebugPanel(key) {
+      const s = SCENARIOS[key];
+      debugPanelEl.innerHTML = `
+        <div class="error-code">&gt; HATA: ${s.code}</div>
+        <h3 style="color: #fff; margin-bottom: 0.75rem;">${s.title}</h3>
+        <p style="color: var(--text-muted); margin-bottom: 0.5rem;"><b>🔍 Belirtiler:</b> ${s.symptoms}</p>
+        <p style="color: #fda4af; margin-bottom: 1rem;"><b>⚡ Kök Neden:</b> ${s.cause}</p>
+        <div class="solution-box">
+          <b style="color: var(--teal); display: block; margin-bottom: 0.35rem;">🔧 Felsefi Refactoring / Çözüm:</b>
+          ${s.fix.map(x => `<div>• ${x}</div>`).join("")}
+        </div>
+        <div style="margin-top: 1rem;">
+          <a href="${s.doc}" target="_blank" style="color: var(--primary); font-size: 0.9rem;">📚 İlgili Metne Git &rarr;</a>
+        </div>
+      `;
+    }
+
+    // --- SES MOTORU (WEB AUDIO API AMBİYANS) ---
+    let audioCtx = null;
+    let isPlaying = false;
+    let noiseNode = null;
+    let gainNode = null;
+
+    document.getElementById("btnSound").onclick = function() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (isPlaying) {
+        if (gainNode) gainNode.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 1);
+        setTimeout(() => { if (noiseNode) { noiseNode.stop(); noiseNode.disconnect(); } }, 1000);
+        isPlaying = false;
+        document.getElementById("soundIcon").innerText = "🔇";
+        document.getElementById("soundText").innerText = "Nehir Ambiyansı (Ses Başlat)";
+      } else {
+        audioCtx.resume();
+        const bufferSize = audioCtx.sampleRate * 2;
+        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const output = buffer.getChannelData(0);
+        let b0 = 0, b1 = 0, b2 = 0;
+        for (let i = 0; i < bufferSize; i++) {
+          const white = Math.random() * 2 - 1;
+          b0 = 0.99886 * b0 + white * 0.0555179;
+          b1 = 0.99332 * b1 + white * 0.0750759;
+          b2 = 0.96900 * b2 + white * 0.1538520;
+          output[i] = (b0 + b1 + b2) * 0.11;
+        }
+        noiseNode = audioCtx.createBufferSource();
+        noiseNode.buffer = buffer;
+        noiseNode.loop = true;
+
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = "lowpass";
+        filter.frequency.setValueAtTime(450, audioCtx.currentTime);
+
+        gainNode = audioCtx.createGain();
+        gainNode.gain.setValueAtTime(0.01, audioCtx.currentTime);
+        gainNode.gain.linearRampToValueAtTime(0.35, audioCtx.currentTime + 2);
+
+        noiseNode.connect(filter);
+        filter.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        noiseNode.start();
+        isPlaying = true;
+        document.getElementById("soundIcon").innerText = "🌊";
+        document.getElementById("soundText").innerText = "Nehir Akıyor (Durdur)";
+      }
+    };
+
+    // Tibet Çanı Sentezi
+    document.getElementById("btnChime").onclick = function() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(432, audioCtx.currentTime); // 432 Hz Şifa Frekansı
+      gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 4.5);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 4.5);
+    };
+
+    // Rastgele Aforizma
+    document.getElementById("btnNewQuote").onclick = function() {
+      const q = ALL_QUOTES[Math.floor(Math.random() * ALL_QUOTES.length)];
+      document.getElementById("randomQuoteBanner").innerHTML = `
+        "${q.text}"
+        <div style="font-weight: 600; color: var(--accent); margin-top: 0.5rem;">— ${q.author}</div>
+      `;
+    };
+
+    // --- NEFES ZAMANLAYICISI ---
+    let breathInterval = null;
+    let breathRunning = false;
+    const breathCircle = document.getElementById("breathCircle");
+    const breathInstruction = document.getElementById("breathInstruction");
+    const btnBreath = document.getElementById("btnBreathToggle");
+
+    btnBreath.onclick = function() {
+      if (breathRunning) {
+        clearInterval(breathInterval);
+        breathRunning = false;
+        breathCircle.className = "breath-circle";
+        breathCircle.innerText = "Hazır";
+        breathInstruction.innerText = "Pratik durduruldu.";
+        btnBreath.innerText = "Nefes Pratiğini Başlat";
+      } else {
+        breathRunning = true;
+        btnBreath.innerText = "Pratiği Durdur";
+        runBreathCycle();
+        breathInterval = setInterval(runBreathCycle, 12000);
+      }
+    };
+
+    function runBreathCycle() {
+      // 1. Nefes Al (4 saniye)
+      breathCircle.className = "breath-circle inhale";
+      breathCircle.innerText = "Nefes Al";
+      breathInstruction.innerText = "Derin ve sakin bir nefes al... (4 sn)";
+      
+      // 2. Tut (2 saniye)
+      setTimeout(() => {
+        if (!breathRunning) return;
+        breathCircle.className = "breath-circle hold";
+        breathCircle.innerText = "Tut";
+        breathInstruction.innerText = "Nefesini merkezinde tut... (2 sn)";
+      }, 4000);
+
+      // 3. Ver (6 saniye)
+      setTimeout(() => {
+        if (!breathRunning) return;
+        breathCircle.className = "breath-circle exhale";
+        breathCircle.innerText = "Bırak";
+        breathInstruction.innerText = "Nehrin akışına bırakırcasına yavaşça ver... (6 sn)";
+      }, 6000);
+    }
+
+    // --- MODÜLLER VE ARAMA MOTORU ---
+    const modulesContainer = document.getElementById("modulesContainer");
+    const searchInput = document.getElementById("searchInput");
+
+    function renderModules(filter = "") {
+      modulesContainer.innerHTML = "";
+      const q = filter.toLowerCase().trim();
+
+      MODULES.forEach((m, idx) => {
+        const matchedDocs = m.docs.filter(d => d.toLowerCase().includes(q) || m.title.toLowerCase().includes(q));
+        if (q && matchedDocs.length === 0) return;
+
+        const modEl = document.createElement("div");
+        modEl.className = "module-item";
+        modEl.innerHTML = `
+          <div class="module-header" onclick="this.nextElementSibling.classList.toggle('open')">
+            <span>📁 ${m.folder} — ${m.title}</span>
+            <span style="color: var(--text-muted); font-size: 0.85rem;">${matchedDocs.length} Metin ▾</span>
+          </div>
+          <div class="module-body ${q ? 'open' : ''}">
+            ${matchedDocs.map(d => `<a class="doc-link" href="${m.folder}/${d}" target="_blank">📄 ${d}</a>`).join("")}
+          </div>
+        `;
+        modulesContainer.appendChild(modEl);
+      });
+
+      if (modulesContainer.children.length === 0) {
+        modulesContainer.innerHTML = `<p style="color: var(--rose); padding: 1rem 0;">"${filter}" ile eşleşen doküman bulunamadı.</p>`;
+      }
+    }
+
+    searchInput.addEventListener("input", (e) => {
+      renderModules(e.target.value);
+    });
+
+    // Başlatıcı
+    renderTimeline();
+    renderDebugger();
+    renderModules();
+  </script>
+</body>
+</html>
